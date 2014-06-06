@@ -1,10 +1,11 @@
 
 
-class State:
+
+class State(object):
 
     EMPTY = '-'
-    X = 'x'
-    O = 'o'
+    X = 'X'
+    O = 'O'
 
     def __init__(self, board):
         self.__side_len = len(board) ** 0.5

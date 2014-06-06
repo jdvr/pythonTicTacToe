@@ -1,5 +1,6 @@
 import unittest
 from state import State
+from player import Player
 
 
 class TestBoard(unittest.TestCase):
@@ -19,6 +20,8 @@ class TestBoard(unittest.TestCase):
         board_with_x = [State.EMPTY] * 4 + list(State.O) + [State.EMPTY] * 4
         self.assertEqual(self.__state.put_symbol(State.O, 1, 1).get_board(), board_with_x)
 
-    def test_create_a_player_x(self):
-        player_x = Player(State.X)
-        self.assertEqual(player_x.get_type(), State.X)
+
+
+
+
+
