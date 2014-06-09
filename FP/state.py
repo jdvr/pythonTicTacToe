@@ -32,6 +32,17 @@ class State(object):
                 return brd[:sid] + list('\n') + format_list(brd[sid:], sid)
 
         return ''.join(format_list(board, int(side)))
+    
+    def won_by(self, symbol):
+        return ((self.__board[6] == symbol and self.__board[7] == symbol and self.__board[8] == symbol) or # across the top
+        (self.__board[3] == symbol and self.__board[4] == symbol and self.__board[5] == symbol) or # across the middsymbol
+        (self.__board[0] == symbol and self.__board[1] == symbol and self.__board[2] == symbol) or # across the self.__boardttom
+        (self.__board[6] == symbol and self.__board[3] == symbol and self.__board[0] == symbol) or # down the symbolft side
+        (self.__board[7] == symbol and self.__board[3] == symbol and self.__board[1] == symbol) or # down the middsymbol
+        (self.__board[8] == symbol and self.__board[4] == symbol and self.__board[2] == symbol) or # down the right side
+        (self.__board[6] == symbol and self.__board[3] == symbol and self.__board[2] == symbol) or # diagonal
+        (self.__board[8] == symbol and self.__board[3] == symbol and self.__board[0] == symbol)) # diagonal
+
 
     def get_abs_pos(self, row, colum):
         return row * int(self.__side_len) + colum

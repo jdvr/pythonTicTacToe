@@ -3,7 +3,7 @@ from state import State
 
 class Game(object):
 
-    def __init__(self, state, player_one, player_two, player_one_turn=True):
+    def __init__(self, state, player_one, player_two, player_one_turn):
         self.__state = state
         self.__player_one = player_one
         self.__player_two = player_two
@@ -21,10 +21,13 @@ class Game(object):
     def player_move(self, row, column):
         new_state = self.__state.put_symbol(self.__player_one.get_type(), row, column) if self.__player_one_turn else \
             self.__state.put_symbol(self.__player_two.get_type(), row, column)
-        return Game(new_state, self.__player_one, self.__player_two)
+        return Game(new_state, self.__player_one, self.__player_two, self.__player_one_turn)
 
-    def cross_win(self):
-        return self.vertical_win(State.X) or self.horizontal_win(State.X) or self.diagonal_win(State.X)
+    def won_by(self, symbol):
+        
+        return self.__state.won_by(symbol)
 
+    def is_terminal(self):
+        return self.won_by(State.O) or self.won_by(State.X)
 
 
